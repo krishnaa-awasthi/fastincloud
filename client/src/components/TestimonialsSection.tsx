@@ -1,36 +1,38 @@
 import { useState, useEffect } from "react";
 import { Card, CardContent } from "@/components/ui/card";
-import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import testimonial1 from "@assets/generated_images/Executive_testimonial_photo_1_c6ca384a.png";
-import testimonial2 from "@assets/generated_images/Executive_testimonial_photo_2_5c896962.png";
-
 export function TestimonialsSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const testimonials = [
     {
-      quote: "MQL Experts transformed our lead generation process. We went from chasing cold leads to engaging with prospects who are already interested in our solutions. Our close rate has never been higher.",
-      author: "Michael Chen",
-      role: "VP of Sales",
-      company: "TechFlow Solutions",
-      avatar: testimonial1,
+      quote: "MQL Experts helped us connect with the right decision-makers faster than ever. Their database quality and outreach consistency gave our campaigns a real edge.",
+      author: "Sayed Sahil Zeeshan",
+      company: "Zartek IT Solutions",
+      
     },
     {
-      quote: "The data quality is exceptional. Every contact is verified, enriched, and comes with behavioral insights that help us personalize our outreach. It's like having a research team dedicated to each prospect.",
-      author: "Sarah Martinez",
-      role: "Chief Marketing Officer",
-      company: "CloudScale",
-      avatar: testimonial2,
+      quote: "We saw a significant improvement in lead quality and meeting conversions within weeks. The MQL Experts team truly understands B2B communication.",
+      author: "Sumit Verma",
+      company: "Fast In Cloud Digital Solutions LLP",
     },
     {
-      quote: "ROI was immediate. Within the first month, we identified $2M in pipeline opportunities we would have missed. The platform pays for itself many times over.",
-      author: "David Thompson",
-      role: "Head of Business Development",
-      company: "DataSync Enterprise",
-      avatar: testimonial1,
+      quote: "The professionalism and precision of MQL Experts have made them our go-to partner for customer outreach. Every campaign runs smoothly and delivers measurable results.",
+      author: "Amal Kumar Pandey",
+      company: "Orea Homes",
     },
+    {
+      quote: "Their corporate database is clean, accurate, and perfectly segmented. We built several successful campaigns thanks to their timely delivery and strong support.", 
+      author: "Mithilesh Kuma Jha",
+      company: "The Speedy Loans",
+    },
+    {
+      quote: "What impressed us most was the accountability and transparency MQL Experts maintained throughout the project. They deliver exactly what they promise.",
+      author: "Mayank Saxena",
+      company: "APRICOAT INSURANCE MARKETING PRIVATE LIMITED",
+    },
+
   ];
 
   const nextTestimonial = () => {
@@ -85,21 +87,10 @@ export function TestimonialsSection() {
                   "{testimonials[currentIndex].quote}"
                 </p>
                 <div className="flex flex-col items-center">
-                  <Avatar className="w-20 h-20 mb-4">
-                    <AvatarImage
-                      src={testimonials[currentIndex].avatar}
-                      alt={testimonials[currentIndex].author}
-                    />
-                    <AvatarFallback>
-                      {testimonials[currentIndex].author.split(" ").map(n => n[0]).join("")}
-                    </AvatarFallback>
-                  </Avatar>
+                  
                   <h3 className="font-semibold text-lg text-foreground" data-testid={`text-testimonial-author-${currentIndex}`}>
                     {testimonials[currentIndex].author}
                   </h3>
-                  <p className="text-muted-foreground" data-testid={`text-testimonial-role-${currentIndex}`}>
-                    {testimonials[currentIndex].role}
-                  </p>
                   <p className="text-primary font-medium" data-testid={`text-testimonial-company-${currentIndex}`}>
                     {testimonials[currentIndex].company}
                   </p>

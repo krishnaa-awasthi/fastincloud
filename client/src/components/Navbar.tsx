@@ -22,10 +22,10 @@ export function Navbar({ onBookDemo }: NavbarProps) {
 
   const navLinks = [
     { name: "Home", href: "/" },
-    { name: "Solutions", href: "#solutions" },
-    { name: "Industries", href: "#industries" },
-    { name: "Resources", href: "#resources" },
     { name: "About", href: "#about" },
+    { name: "Solutions", href: "#solutions" },
+    { name: "Industries", href: "#" },
+    { name: "Resources", href: "#resources" },
     { name: "Contact", href: "#contact" },
   ];
 
@@ -51,16 +51,14 @@ export function Navbar({ onBookDemo }: NavbarProps) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           <Link href="/" className="flex items-center space-x-2" data-testid="link-home">
-            <div className="flex items-center space-x-2">
-              <div className="w-10 h-10 rounded-md bg-gradient-to-br from-primary to-chart-2 flex items-center justify-center">
-                <span className="text-white font-bold text-xl">M</span>
-              </div>
-              <span className="text-xl font-bold text-foreground">
-                MQL Experts
-              </span>
-            </div>
+            <img
+              src="/favicon.png"
+              alt="MQL Experts Logo"
+              className={`object-contain transition-all duration-300 ${
+              isScrolled ? "h-14" : "h-16"
+              }`}
+            />
           </Link>
-
           <div className="hidden lg:flex items-center space-x-8">
             {navLinks.map((link) => (
               <a

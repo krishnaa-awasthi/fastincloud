@@ -5,23 +5,24 @@ export function SolutionsSection() {
   const solutions = [
     {
       icon: Target,
-      title: "Lead Generation",
-      description: "Discover high-quality B2B leads with verified contact information and behavioral insights.",
+      title: "Smart Corporate Database",
+      description: "Delivering verified, segmented B2B data to enable precision-driven marketing and sales decisions.",
+      
     },
     {
       icon: TrendingUp,
-      title: "Sales Intelligence",
-      description: "Access real-time company data and buyer signals to prioritize your outreach efforts.",
+      title: "Customer Outreach for Events & Leads",
+      description: "Helping businesses drive engagement and conversions through tailored outreach strategies.",
     },
     {
       icon: Users,
-      title: "Customer Profiling",
-      description: "Build detailed ICPs with firmographic, technographic, and intent data for precision targeting.",
+      title: "Appointment Setting",
+      description: "Facilitating meaningful connections between sales teams and high-value decision-makers.",
     },
     {
       icon: Database,
-      title: "Database Management",
-      description: "Maintain clean, enriched contact databases with automated data validation and updates.",
+      title: "Surveys & Feedback Campaigns",
+      description: "Enabling data-backed insights through targeted surveys and feedback initiatives.",
     },
   ];
 
@@ -37,7 +38,7 @@ export function SolutionsSection() {
             className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4"
             data-testid="text-solutions-heading"
           >
-            Comprehensive B2B Data Solutions
+            Everything You Need to Reach, <span className="text-primary">Engage</span> & Convert
           </h2>
           <p
             className="text-lg text-muted-foreground max-w-2xl mx-auto"

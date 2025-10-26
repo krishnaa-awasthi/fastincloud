@@ -46,21 +46,18 @@ export function Footer() {
   const footerSections = {
     Company: [
       { name: "About Us", href: "#about" },
-      { name: "Careers", href: "#careers" },
-      { name: "Press Kit", href: "#press" },
       { name: "Contact", href: "#contact" },
     ],
     Solutions: [
-      { name: "Lead Generation", href: "#solutions" },
-      { name: "Sales Intelligence", href: "#solutions" },
-      { name: "Customer Profiling", href: "#solutions" },
-      { name: "Database Management", href: "#solutions" },
+      { name: "Smart Corporate Database", href: "#solutions" },
+      { name: "Customer Outreach for Events & Leads", href: "#solutions" },
+      { name: "Appointment Setting", href: "#solutions" },
+      { name: "Surveys & Feedback Campaigns", href: "#solutions" },
     ],
     Resources: [
-      { name: "Blog", href: "#blog" },
-      { name: "Case Studies", href: "#resources" },
+      { name: "Blog", href: "#resources" },
       { name: "Documentation", href: "#docs" },
-      { name: "API", href: "#api" },
+      { name: "Case Studies", href: "#resources" },
     ],
     Legal: [
       { name: "Privacy Policy", href: "#privacy" },
@@ -74,7 +71,7 @@ export function Footer() {
     { Icon: Linkedin, href: "#", label: "LinkedIn" },
     { Icon: Twitter, href: "#", label: "Twitter" },
     { Icon: Facebook, href: "#", label: "Facebook" },
-    { Icon: Mail, href: "mailto:info@mqlexperts.com", label: "Email" },
+    { Icon: Mail, href: "mailto:sales@mqlexperts.com", label: "Email" },
   ];
 
   return (
@@ -83,9 +80,10 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8 mb-12">
           <div className="lg:col-span-2">
             <div className="flex items-center space-x-2 mb-4">
-              <div className="w-10 h-10 rounded-md bg-gradient-to-br from-primary to-chart-2 flex items-center justify-center">
-                <span className="text-white font-bold text-xl">M</span>
-              </div>
+              <img src="/favicon.png"
+                   alt="MQL Experts Logo"
+                   className="h-20 w-20"
+              />
               <span className="text-xl font-bold">MQL Experts</span>
             </div>
             <p className="text-background/80 mb-6">

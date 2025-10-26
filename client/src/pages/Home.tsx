@@ -9,6 +9,7 @@ import { TestimonialsSection } from "@/components/TestimonialsSection";
 import { CTABanner } from "@/components/CTABanner";
 import { Footer } from "@/components/Footer";
 import { DemoModal } from "@/components/DemoModal";
+import AboutUsSection from "@/components/AboutUsSection";
 
 export default function Home() {
   const [isDemoModalOpen, setIsDemoModalOpen] = useState(false);
@@ -28,6 +29,7 @@ export default function Home() {
 
     const sectionIds = [
       'section-hero',
+      'section-about-us',
       'section-trusted-by',
       'section-solutions',
       'section-why-choose-us',
@@ -58,6 +60,17 @@ export default function Home() {
           }`}
         >
           <HeroSection onBookDemo={() => setIsDemoModalOpen(true)} />
+        </div>
+
+        <div
+          id="section-about-us"
+          className={`transition-all duration-1000 transform ${
+            isVisible["section-about-us"]
+              ? "opacity-100 translate-y-0"
+              : "opacity-0 translate-y-10"
+          }`}
+        >
+          <AboutUsSection/>
         </div>
 
         <div

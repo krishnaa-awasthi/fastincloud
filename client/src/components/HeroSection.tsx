@@ -30,19 +30,19 @@ export function HeroSection({ onBookDemo }: HeroSectionProps) {
           className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-foreground mb-6 tracking-tight"
           data-testid="text-hero-headline"
         >
-          Prospect Smarter.
+          Smart Data.
           <br />
-          <span className="text-primary">Connect Faster.</span>
+          <span className="text-primary">Smarter Outreach.</span>
           <br />
-          Close Bigger.
+          Real Results.
         </h1>
         
         <p
           className="text-lg sm:text-xl lg:text-2xl text-muted-foreground max-w-3xl mx-auto mb-8 leading-relaxed"
           data-testid="text-hero-subtext"
         >
-          Empowering B2B marketing and sales teams with intelligent data that
-          converts leads into customers.
+          MQL Experts helps businesses grow through data-driven customer outreach, verified B2B
+databases, and qualified appointments that turn conversations into revenue.
         </p>
         
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">

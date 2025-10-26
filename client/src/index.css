@@ -349,3 +349,24 @@
     inset: -1px;
   }
 }
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Basic marquee motion */
+.marquee-track {
+  display: flex;
+  width: calc(200%);
+  animation: marquee 25s linear infinite;
+}
+
+/* ✅ Pause the animation when hovered */
+.marquee-container:hover .marquee-track {
+  animation-play-state: paused;
+}

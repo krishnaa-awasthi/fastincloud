@@ -1,41 +1,97 @@
-import logo1 from "@assets/generated_images/Tech_company_logo_1_51a2142b.png";
-import logo2 from "@assets/generated_images/SaaS_company_logo_2_e85603f2.png";
-import logo3 from "@assets/generated_images/Enterprise_software_logo_3_5a611c60.png";
+import React from "react";
 
+// ✅ Trusted By Section — Production Ready
 export function TrustedBySection() {
+  // Logos (you can swap these imports for CDN/image URLs later)
   const logos = [
-    { src: logo1, alt: "TechFlow Solutions" },
-    { src: logo2, alt: "CloudScale" },
-    { src: logo3, alt: "DataSync Enterprise" },
-    { src: logo1, alt: "InnovateLab" },
-    { src: logo2, alt: "QuantumSoft" },
-    { src: logo3, alt: "NexGen Systems" },
+    {
+      src: "https://upload.wikimedia.org/wikipedia/commons/d/d4/SafeNet_logo.svg",
+      alt: "Safenet Logo",
+    },
+    {
+      src: "https://content.jdmagicbox.com/comp/pune/m3/020pxx20.xx20.100415190824.l1m3/catalogue/sakri-it-solutions-pvt-ltd-kharadi-pune-corporate-companies-for-it-f64kk16cp0-250.jpg",
+      alt: "Sakri Logo",
+    },
+    {
+      src: "https://upload.wikimedia.org/wikipedia/commons/8/81/Logo_motorola_solutions.png",
+      alt: "Motorola solutions logo",
+    },
+    {
+      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Trend_Micro_logo.svg/1200px-Trend_Micro_logo.svg.png",
+      alt: "Trend Logo",
+    },
+    {
+      src: "https://media.licdn.com/dms/image/v2/C511BAQEotathWzwOjA/company-background_10000/company-background_10000/0/1583923079073/solvate_laboratories_pvtltd_cover?e=2147483647&v=beta&t=yITxzX1ID8OExiZIjhGVeFVEa0SfZi9CZcOet6b8qTs",
+      alt: "solvate logo",
+    },
+    {
+      src: "https://upload.wikimedia.org/wikipedia/commons/c/c7/REDINGTON_LOGO.gif?20150608080419",
+      alt: "redingto logo",
+    },
+    {
+      src: "https://content3.jdmagicbox.com/comp/noida/b4/011pxx11.xx11.130427225416.g7b4/catalogue/cloudway-consulting-pvt-ltd-sector-8-noida-computer-software-dealers-8d3ep.jpg",
+      alt: "cloudway logo",
+    },
+    {
+      src: "https://upload.wikimedia.org/wikipedia/commons/0/0f/Ingram_Micro_logo_new.svg",
+      alt: "ingram Logo",
+    },
+    {
+      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Hitachi_logo.svg/1200px-Hitachi_logo.svg.png?20240210051816",
+      alt: "Hitachi Logo",
+    },
+    {
+      src: "https://upload.wikimedia.org/wikipedia/en/thumb/0/03/Gemalto.svg/1200px-Gemalto.svg.png",
+      alt: "Gemalto Logo",
+    },
+    {
+      src: "https://i.ibb.co/gM6mrkP6/Screenshot-2025-10-26-200149.png",
+      alt: "impact logo",
+    },
   ];
+
+  // Duplicate logos for seamless infinite scroll
+  const scrollingLogos = [...logos, ...logos];
 
   return (
     <section
-      className="py-16 bg-muted/30"
-      data-testid="section-trusted-by"
+      id="trusted-by"
+      className="py-20 bg-gradient-to-br from-background via-muted/20 to-background overflow-hidden"
+      aria-labelledby="trusted-by-heading"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <p
-          className="text-center text-sm font-medium text-muted-foreground mb-8 tracking-wide uppercase"
-          data-testid="text-trusted-caption"
+      {/* Heading + Description */}
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-12">
+        <h2
+          id="trusted-by-heading"
+          className="text-3xl sm:text-4xl font-bold text-foreground mb-4"
         >
-          Trusted by leading IT and SaaS companies worldwide
+          Trusted by Industry Leaders
+        </h2>
+
+        <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+          We partner with innovative global brands to accelerate growth,
+          increase conversions, and amplify outreach performance. Here’s a
+          glimpse of some of the companies that trust us to deliver measurable
+          results every day.
         </p>
-        
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 items-center">
-          {logos.map((logo, index) => (
+      </div>
+
+      {/* Logo Marquee */}
+      <div className="marquee-container relative w-full overflow-hidden select-none">
+        <div className="marquee-track flex whitespace-nowrap items-center">
+          {scrollingLogos.map((logo, index) => (
             <div
-              key={index}
-              className="flex items-center justify-center opacity-60 hover:opacity-100 transition-all duration-300 grayscale hover:grayscale-0"
-              data-testid={`logo-client-${index}`}
+              key={`${logo.alt}-${index}`}
+              className="flex items-center justify-center min-w-[180px] px-8 opacity-70 hover:opacity-100 transition-all duration-300 grayscale hover:grayscale-0"
+              title={logo.alt}
             >
               <img
                 src={logo.src}
                 alt={logo.alt}
                 className="h-12 w-auto object-contain"
+                loading="lazy"
+                decoding="async"
+                fetchPriority="low"
               />
             </div>
           ))}
@@ -44,3 +100,5 @@ export function TrustedBySection() {
     </section>
   );
 }
+
+export default TrustedBySection;
