@@ -23,13 +23,13 @@ export function CTABanner({ onBookDemo }: CTABannerProps) {
           className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6"
           data-testid="text-cta-heading"
         >
-          Ready to supercharge your B2B pipeline?
+          Ready to turn data into revenue-driven opportunities?
         </h2>
         <p
           className="text-lg sm:text-xl text-white/90 mb-8 max-w-2xl mx-auto"
           data-testid="text-cta-description"
         >
-          Join hundreds of companies using MQL Experts to drive predictable revenue growth
+          Partner with MQL Experts to drive predictable, data-powered growth.
         </p>
         <Button
           size="lg"

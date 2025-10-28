@@ -24,7 +24,6 @@ export function Navbar({ onBookDemo }: NavbarProps) {
     { name: "Home", href: "/" },
     { name: "About", href: "#about" },
     { name: "Solutions", href: "#solutions" },
-    { name: "Industries", href: "#" },
     { name: "Resources", href: "#resources" },
     { name: "Contact", href: "#contact" },
   ];
