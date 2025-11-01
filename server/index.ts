@@ -21,7 +21,11 @@ const frontendPath = path.join(__dirnamePath, "dist", "public");
 app.use(express.static(frontendPath));
 
 // ✅ Register API routes (demo requests, etc.)
-await registerRoutes(app);
+(async () => {
+  await registerRoutes(app);
+  app.listen(5000, () => console.log('Server running on port 5000'));
+})();
+
 
 // ✅ Fallback for SPA routes
 app.get("*", (req, res) => {
