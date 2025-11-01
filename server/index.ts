@@ -1,8 +1,9 @@
-import express, { Request, Response } from "express";
+// server/index.ts
+import express from "express";
 import cors from "cors";
 import path from "path";
 import dotenv from "dotenv";
-import nodemailer from "nodemailer";
+import { registerRoutes } from "./routes"; // ✅ Import your route setup
 
 dotenv.config();
 
@@ -14,46 +15,20 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Serve static frontend (from client/dist/public)
+// Serve frontend
 const __dirnamePath = path.resolve();
 const frontendPath = path.join(__dirnamePath, "dist", "public");
-
 app.use(express.static(frontendPath));
 
-// --- API ROUTE ---
-app.post("/api/contact", async (req: Request, res: Response) => {
-  try {
-    const { name, email, message } = req.body;
+// ✅ Register API routes (demo requests, etc.)
+await registerRoutes(app);
 
-    // Respond immediately
-    res.status(200).json({ success: true, message: "Message received!" });
-
-    // Send mail in background
-    const transporter = nodemailer.createTransport({
-      service: "gmail",
-      auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
-      },
-    });
-
-    await transporter.sendMail({
-      from: email,
-      to: process.env.EMAIL_USER,
-      subject: `New Contact from ${name}`,
-      text: message,
-    });
-  } catch (err) {
-    console.error("Mail send error:", err);
-  }
-});
-
-// --- Fallback for SPA ---
-app.get("*", (req: Request, res: Response) => {
+// ✅ Fallback for SPA routes
+app.get("*", (req, res) => {
   res.sendFile(path.join(frontendPath, "index.html"));
 });
 
-// Start server
+// ✅ Start server
 app.listen(PORT, () => {
   console.log(`🚀 Server running on port ${PORT}`);
 });

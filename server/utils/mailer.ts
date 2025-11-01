@@ -36,5 +36,12 @@ export async function sendLeadEmail(data: {
     `,
   };
 
-  await transporter.sendMail(mailOptions);
+  try {
+  const info = await transporter.sendMail(mailOptions);
+  console.log("Email sent:", info.messageId);
+} catch (err) {
+  console.error("Error sending lead email:", err);
+  throw new Error("Failed to send lead email");
+}
+
 }

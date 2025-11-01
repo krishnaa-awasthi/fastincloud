@@ -1,24 +1,26 @@
+// server/routes.ts
 import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { insertDemoRequestSchema } from "@shared/schema";
 import { fromError } from "zod-validation-error";
-import { sendLeadEmail } from "./utils/mailer"; // <- add this file next
+import { sendLeadEmail } from "./utils/mailer";
 
 export async function registerRoutes(app: Express): Promise<Server> {
-  // POST /api/demo-requests
   app.post("/api/demo-requests", async (req, res) => {
     try {
-      // ✅ Validate input using Zod
       const validatedData = insertDemoRequestSchema.parse(req.body);
 
-      // ✅ Send email to admin
-      await sendLeadEmail(validatedData);
-
-      // ✅ Respond success
+      // ✅ Respond instantly to frontend
       res.json({
         success: true,
-        message: "Demo request email sent successfully.",
+        message: "Demo request received! We'll contact you shortly.",
       });
+
+      // ✅ Send email in background (no await)
+      sendLeadEmail(validatedData).catch((err) => {
+        console.error("Background email send failed:", err.message);
+      });
+
     } catch (error: any) {
       console.error("Error handling demo request:", error);
 
@@ -30,15 +32,13 @@ export async function registerRoutes(app: Express): Promise<Server> {
         });
       }
 
+      // Still send a proper response if validation fails
       res.status(500).json({
-        message: "Failed to send demo request email",
+        message: "Failed to handle demo request",
         error: error.message,
       });
     }
   });
-
-  // You can remove or comment out newsletter routes completely
-  // since admin doesn’t want any stored data
 
   const httpServer = createServer(app);
   return httpServer;

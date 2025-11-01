@@ -29,7 +29,7 @@ export function TrustedBySection() {
       alt: "redingto logo",
     },
     {
-      src: "https://content3.jdmagicbox.com/comp/noida/b4/011pxx11.xx11.130427225416.g7b4/catalogue/cloudway-consulting-pvt-ltd-sector-8-noida-computer-software-dealers-8d3ep.jpg",
+      src: "https://i.ibb.co/hR3YgJMZ/Screenshot-2025-10-28-103658.png",
       alt: "cloudway logo",
     },
     {
