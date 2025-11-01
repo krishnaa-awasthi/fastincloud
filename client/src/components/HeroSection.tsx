@@ -34,11 +34,11 @@ export function HeroSection({ onBookDemo }: HeroSectionProps) {
           <br />
           <span className="text-primary">Smarter Outreach.</span>
           <br />
-          Real Results.
+          Solid Results.
         </h1>
         
         <p
-          className="text-lg sm:text-xl lg:text-2xl text-muted-foreground max-w-3xl mx-auto mb-8 leading-relaxed"
+          className="text-lg sm:text-xl lg:text-2xl text-gray-700 dark:text-gray-300 max-w-3xl mx-auto mb-8 leading-relaxed"
           data-testid="text-hero-subtext"
         >
           MQL Experts helps businesses grow through data-driven customer outreach, verified B2B

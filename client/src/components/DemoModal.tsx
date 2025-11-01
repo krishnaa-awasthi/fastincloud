@@ -72,7 +72,7 @@ export function DemoModal({ open, onOpenChange }: DemoModalProps) {
               name="name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Full Name *</FormLabel>
+                  <FormLabel>Customer Name *</FormLabel>
                   <FormControl>
                     <Input
                       placeholder="John Doe"

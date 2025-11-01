@@ -41,8 +41,8 @@ export function TrustedBySection() {
       alt: "Hitachi Logo",
     },
     {
-      src: "https://upload.wikimedia.org/wikipedia/en/thumb/0/03/Gemalto.svg/1200px-Gemalto.svg.png",
-      alt: "Gemalto Logo",
+      src: "https://upload.wikimedia.org/wikipedia/commons/2/21/Thales_Logo.svg",
+      alt: "thelas Logo",
     },
     {
       src: "https://i.ibb.co/gM6mrkP6/Screenshot-2025-10-26-200149.png",

@@ -8,7 +8,7 @@ import { registerRoutes } from "./routes"; // ✅ Import your route setup
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5001;
 
 // Middlewares
 app.use(cors());
@@ -20,19 +20,17 @@ const __dirnamePath = path.resolve();
 const frontendPath = path.join(__dirnamePath, "dist", "public");
 app.use(express.static(frontendPath));
 
-// ✅ Register API routes (demo requests, etc.)
+// ✅ Register API routes and start server
 (async () => {
   await registerRoutes(app);
-  app.listen(5000, () => console.log('Server running on port 5000'));
+
+  // ✅ Fallback for SPA routes
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(frontendPath, "index.html"));
+  });
+
+  // ✅ Start server only once
+  app.listen(PORT, () => {
+    console.log(`🚀 Server running on port ${PORT}`);
+  });
 })();
-
-
-// ✅ Fallback for SPA routes
-app.get("*", (req, res) => {
-  res.sendFile(path.join(frontendPath, "index.html"));
-});
-
-// ✅ Start server
-app.listen(PORT, () => {
-  console.log(`🚀 Server running on port ${PORT}`);
-});
