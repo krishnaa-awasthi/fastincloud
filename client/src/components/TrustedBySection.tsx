@@ -91,7 +91,7 @@ export function TrustedBySection() {
                 className="h-12 w-auto object-contain"
                 loading="lazy"
                 decoding="async"
-                fetchpriority="low"
+                fetchPriority="low"
               />
             </div>
           ))}
