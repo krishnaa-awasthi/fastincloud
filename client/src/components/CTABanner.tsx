@@ -38,7 +38,7 @@ export function CTABanner({ onBookDemo }: CTABannerProps) {
           data-testid="button-cta-demo"
         >
           <Sparkles className="mr-2 w-5 h-5" />
-          Book a Free Demo
+          Request a Free Quote
         </Button>
       </div>
     </section>

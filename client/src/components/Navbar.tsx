@@ -122,7 +122,8 @@ export function Navbar({ onBookDemo }: NavbarProps) {
               className="bg-primary hover:bg-primary/90"
               data-testid="button-book-demo"
             >
-              Book a Demo
+              Request a Quote
+
             </Button>
           </div>
 
@@ -186,7 +187,8 @@ export function Navbar({ onBookDemo }: NavbarProps) {
               className="w-full bg-primary"
               data-testid="button-mobile-demo"
             >
-              Book a Demo
+              Request a Quote
+
             </Button>
           </div>
         </div>

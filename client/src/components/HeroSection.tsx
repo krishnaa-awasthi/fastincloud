@@ -52,7 +52,7 @@ databases, and qualified appointments that turn conversations into revenue.
             className="bg-gradient-to-r from-primary to-chart-2 hover:opacity-90 text-white px-8 py-6 text-lg min-h-12"
             data-testid="button-get-demo"
           >
-            Get a Demo
+            Request a Quote
             <ArrowRight className="ml-2 w-5 h-5" />
           </Button>
           <Button

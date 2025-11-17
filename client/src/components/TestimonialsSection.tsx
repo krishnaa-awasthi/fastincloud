@@ -50,6 +50,7 @@ export function TestimonialsSection() {
 
   return (
     <section
+      id="testimonials"
       className="py-20 bg-gradient-to-br from-primary/5 via-chart-2/5 to-primary/5"
       data-testid="section-testimonials"
     >

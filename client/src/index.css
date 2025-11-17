@@ -370,3 +370,22 @@
 .marquee-container:hover .marquee-track {
   animation-play-state: paused;
 }
+
+/* Blue Rectangular Scrollbar for Blog Dialog */
+.blog-scrollbar::-webkit-scrollbar {
+  width: 10px;
+}
+
+.blog-scrollbar::-webkit-scrollbar-track {
+  background: #e5e7eb; /* gray-200 */
+}
+
+.blog-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #3b82f6; /* blue-500 */
+  border-radius: 0px; /* RECTANGULAR */
+}
+
+.blog-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #3b82f6 #e5e7eb;
+}
