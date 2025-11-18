@@ -38,10 +38,10 @@ export function Navbar({ onBookDemo }: NavbarProps) {
 
   const navLinks = [
     { name: "Home", href: "/" },
-    { name: "About", href: "#about" },
-    { name: "Solutions", href: "#solutions" },
-    { name: "Resources", href: "#resources" },
-    { name: "Contact", href: "#contact" },
+    { name: "About", href: "/#about" },
+    { name: "Solutions", href: "/#solutions" },
+    { name: "Resources", href: "/#resources" },
+    { name: "Contact", href: "/#contact" },
   ];
 
   const handleNavClick = (href: string) => {
