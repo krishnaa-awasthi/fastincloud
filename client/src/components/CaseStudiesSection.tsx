@@ -25,7 +25,7 @@ export function CaseStudiesSection() {
             className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4"
             data-testid="text-case-studies-heading"
           >
-            Success Stories & Insights
+            Success Stories & <span className="text-primary">Insights</span>
           </h2>
 
           <p
@@ -49,7 +49,7 @@ export function CaseStudiesSection() {
                 <div className="aspect-video overflow-hidden">
                   <img
                     src={blog.image}
-                    alt={blog.title}
+                    alt={typeof blog.title === 'string' ? blog.title : 'Blog image'}
                     className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
                     data-testid={`img-case-study-${index}`}
                   />

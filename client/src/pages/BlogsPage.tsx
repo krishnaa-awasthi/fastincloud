@@ -50,7 +50,7 @@ export default function BlogsPage() {
                   <div className="aspect-video overflow-hidden">
                     <img
                       src={blog.image}
-                      alt={blog.title}
+                      alt={typeof blog.title === "string" ? blog.title : ""}
                       className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
                     />
                   </div>
@@ -95,7 +95,7 @@ export default function BlogsPage() {
               <div className="mt-4">
                 <img
                   src={openBlog.image}
-                  alt={openBlog.title}
+                  alt={typeof openBlog.title === "string" ? openBlog.title : ""}
                   className="w-full rounded-lg mb-6 shadow"
                 />
                 <div className="prose prose-neutral max-w-none">
