@@ -248,27 +248,7 @@ export function Footer() {
                 results.
               </p>
 
-              <div className="flex space-x-4">
-                {[
-                  { Icon: Linkedin, href: "https://www.linkedin.com/in/mql-experts-542b92391/", label: "LinkedIn" },
-                  { Icon: Instagram, href:"https://www.instagram.com/mql.experts/?hl=en", label: "Instagram" },
-                  { Icon: Facebook, href: "https://www.facebook.com/profile.php?id=61583520491988", label: "Facebook" },
-                  {
-                    Icon: Mail,
-                    href: "mailto:contact@mqlexperts.com",
-                    label: "Email",
-                  },
-                ].map(({ Icon, href, label }) => (
-                  <a
-                    key={label}
-                    href={href}
-                    aria-label={label}
-                    className="w-10 h-10 rounded-full bg-gray-800 hover:bg-gray-700 flex items-center justify-center transition-colors"
-                  >
-                    <Icon className="w-5 h-5 text-white" />
-                  </a>
-                ))}
-              </div>
+              
             </div>
 
             {/* Footer Nav Links */}
