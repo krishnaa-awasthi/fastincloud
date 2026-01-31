@@ -1,3 +1,4 @@
+// App.tsx
 import { Switch, Route } from "wouter";
 import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
@@ -7,6 +8,7 @@ import Home from "@/pages/Home";
 import NotFound from "@/pages/not-found";
 import { FaWhatsapp, FaEnvelope } from "react-icons/fa";
 import BlogsPage from "@/pages/BlogsPage";
+import CookieConsent from "./components/CookieConsent";
 
 function Router() {
   return (
@@ -23,6 +25,7 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <Toaster />
+        <CookieConsent />
         <Router />
         <WhatsAppButton />
       </TooltipProvider>
