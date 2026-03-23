@@ -1,4 +1,6 @@
-import { useState, useEffect } from "react";
+"use client";
+
+import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Sun, Moon } from "lucide-react";
@@ -12,15 +14,18 @@ export function Navbar({ onBookDemo }: NavbarProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [theme, setTheme] = useState<"light" | "dark">("light");
+  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
 
-  /* ---------------- Scroll Detection ---------------- */
+  const closeTimeout = useRef<NodeJS.Timeout | null>(null);
+
+  /* ---------------- Scroll ---------------- */
   useEffect(() => {
     const onScroll = () => setIsScrolled(window.scrollY > 20);
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  /* ---------------- Theme Handling ---------------- */
+  /* ---------------- Theme ---------------- */
   useEffect(() => {
     const saved = (localStorage.getItem("theme") as "light" | "dark") || "light";
     setTheme(saved);
@@ -34,11 +39,33 @@ export function Navbar({ onBookDemo }: NavbarProps) {
   const toggleTheme = () =>
     setTheme((prev) => (prev === "light" ? "dark" : "light"));
 
-  /* ---------------- Navigation ---------------- */
+  /* ---------------- Hover Logic (FIXED UX) ---------------- */
+  const handleMouseEnter = (name: string) => {
+    if (closeTimeout.current) {
+      clearTimeout(closeTimeout.current);
+    }
+    setActiveDropdown(name);
+  };
+
+  const handleMouseLeave = () => {
+    closeTimeout.current = setTimeout(() => {
+      setActiveDropdown(null);
+    }, 200); // smooth delay (key fix)
+  };
+
+  /* ---------------- NAV DATA ---------------- */
   const navLinks = [
     { name: "Home", href: "/" },
     { name: "About", href: "/#about" },
-    { name: "Solutions", href: "/#solutions" },
+    {
+      name: "Solutions",
+      dropdown: [
+        { name: "Smart Corporate Database", href: "/#solutions" },
+        { name: "Customer Outreach", href: "/#solutions" },
+        { name: "Appointment Setting", href: "/#solutions" },
+        { name: "Surveys & Feedback", href: "/#solutions" },
+      ],
+    },
     { name: "Resources", href: "/#resources" },
     { name: "Contact", href: "/#contact" },
   ];
@@ -60,140 +87,119 @@ export function Navbar({ onBookDemo }: NavbarProps) {
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* ================= DESKTOP BAR ================= */}
         <div className="grid grid-cols-3 items-center h-20">
-          {/* -------- LEFT: LOGO -------- */}
-          <div className="flex items-center justify-start">
-            <Link href="/" className="flex items-center gap-2">
+
+          {/* LOGO */}
+          <div className="flex items-center">
+            <Link href="/">
               <img
                 src="/favicon.png"
-                alt="MQL Experts Logo"
-                className={`transition-all duration-300 object-contain ${
+                className={`transition-all ${
                   isScrolled ? "h-14" : "h-16"
                 }`}
               />
             </Link>
           </div>
 
-          {/* -------- CENTER: NAV LINKS -------- */}
-          <div className="hidden lg:flex justify-center items-center gap-10">
+          {/* NAV LINKS */}
+          <div className="hidden lg:flex justify-center gap-10">
             {navLinks.map((link) => (
-              <a
+              <div
                 key={link.name}
-                href={link.href}
-                onClick={(e) => {
-                  if (link.href.startsWith("#")) {
-                    e.preventDefault();
-                    handleNavClick(link.href);
-                  }
-                }}
-                className={`relative text-sm font-medium transition-colors group ${
-                  location === link.href
-                    ? "text-primary"
-                    : "text-muted-foreground hover:text-primary"
-                }`}
+                className="relative"
+                onMouseEnter={() => handleMouseEnter(link.name)}
+                onMouseLeave={handleMouseLeave}
               >
-                {link.name}
-                <span
-                  className={`absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-primary to-chart-2 transition-all duration-300 ${
-                    location === link.href
-                      ? "w-full"
-                      : "w-0 group-hover:w-full"
-                  }`}
-                />
-              </a>
+                {/* MAIN LINK */}
+                <a
+                  href={link.href}
+                  onClick={(e) => {
+                    if (link.href?.startsWith("#")) {
+                      e.preventDefault();
+                      handleNavClick(link.href);
+                    }
+                  }}
+                  className="text-sm font-medium text-muted-foreground hover:text-primary cursor-pointer"
+                >
+                  {link.name}
+                </a>
+
+                {/* DROPDOWN */}
+                {link.dropdown && activeDropdown === link.name && (
+                  <div
+                    onMouseEnter={() => handleMouseEnter(link.name)}
+                    onMouseLeave={handleMouseLeave}
+                    className="absolute top-full left-1/2 -translate-x-1/2 translate-y-1 w-64 bg-white dark:bg-black border shadow-lg rounded-md py-2 z-50"
+                  >
+                    {link.dropdown.map((item) => (
+                      <a
+                        key={item.name}
+                        href={item.href}
+                        className="block px-5 py-2 text-sm hover:bg-accent hover:text-primary transition"
+                      >
+                        {item.name}
+                      </a>
+                    ))}
+                  </div>
+                )}
+              </div>
             ))}
           </div>
 
-          {/* -------- RIGHT: ACTIONS -------- */}
+          {/* RIGHT ACTIONS */}
           <div className="hidden lg:flex justify-end items-center gap-4">
             <button
               onClick={toggleTheme}
-              className="p-2 rounded-full border border-border hover:bg-accent transition"
+              className="p-2 border rounded-full hover:bg-accent"
             >
-              {theme === "light" ? (
-                <Moon className="w-5 h-5" />
-              ) : (
-                <Sun className="w-5 h-5 text-yellow-500" />
-              )}
+              {theme === "light" ? <Moon /> : <Sun className="text-yellow-500" />}
             </button>
 
-            <Button
-              onClick={onBookDemo}
-              className="bg-primary hover:bg-primary/90"
-            >
-              Request a Quote
-            </Button>
+            <Button onClick={onBookDemo}>Request a Quote</Button>
 
             <Button
               onClick={() =>
                 (window.location.href = "https://datasource.mqlexperts.com")
               }
-              className="bg-primary hover:bg-primary/90"
             >
               User Login
             </Button>
           </div>
 
-          {/* -------- MOBILE TOGGLE -------- */}
+          {/* MOBILE */}
           <div className="flex justify-end lg:hidden">
             <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
-              {isMobileMenuOpen ? (
-                <X className="w-6 h-6" />
-              ) : (
-                <Menu className="w-6 h-6" />
-              )}
+              {isMobileMenuOpen ? <X /> : <Menu />}
             </button>
           </div>
         </div>
       </div>
 
-      {/* ================= MOBILE MENU ================= */}
+      {/* MOBILE MENU */}
       {isMobileMenuOpen && (
         <div className="lg:hidden bg-background border-t">
           <div className="px-4 py-6 space-y-4">
             {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                onClick={(e) => {
-                  if (link.href.startsWith("#")) {
-                    e.preventDefault();
-                    handleNavClick(link.href);
-                  }
-                }}
-                className="block text-base font-medium text-muted-foreground hover:text-primary"
-              >
-                {link.name}
-              </a>
+              <div key={link.name}>
+                <a href={link.href} className="block font-medium">
+                  {link.name}
+                </a>
+
+                {link.dropdown && (
+                  <div className="pl-4 mt-2 space-y-2">
+                    {link.dropdown.map((item) => (
+                      <a
+                        key={item.name}
+                        href={item.href}
+                        className="block text-sm text-muted-foreground"
+                      >
+                        {item.name}
+                      </a>
+                    ))}
+                  </div>
+                )}
+              </div>
             ))}
-
-            <button
-              onClick={toggleTheme}
-              className="flex items-center gap-2 p-2 border rounded-full"
-            >
-              {theme === "light" ? <Moon /> : <Sun className="text-yellow-500" />}
-              <span>{theme === "light" ? "Dark Mode" : "Light Mode"}</span>
-            </button>
-
-            <Button
-              onClick={() => {
-                onBookDemo();
-                setIsMobileMenuOpen(false);
-              }}
-              className="w-full bg-primary"
-            >
-              Request a Quote
-            </Button>
-
-            <Button
-              onClick={() =>
-                (window.location.href = "https://datasource.mqlexperts.com")
-              }
-              className="w-full bg-primary"
-            >
-              User Login
-            </Button>
           </div>
         </div>
       )}
