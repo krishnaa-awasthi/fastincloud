@@ -2,7 +2,6 @@
 
 import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "wouter";
-import SmartData from "../pages/SmartData";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Sun, Moon } from "lucide-react";
 
@@ -40,37 +39,35 @@ export function Navbar({ onBookDemo }: NavbarProps) {
   const toggleTheme = () =>
     setTheme((prev) => (prev === "light" ? "dark" : "light"));
 
-  /* ---------------- Hover Logic (FIXED UX) ---------------- */
+  /* ---------------- Hover Logic ---------------- */
   const handleMouseEnter = (name: string) => {
-    if (closeTimeout.current) {
-      clearTimeout(closeTimeout.current);
-    }
+    if (closeTimeout.current) clearTimeout(closeTimeout.current);
     setActiveDropdown(name);
   };
 
   const handleMouseLeave = () => {
     closeTimeout.current = setTimeout(() => {
       setActiveDropdown(null);
-    }, 200); // smooth delay (key fix)
+    }, 200);
   };
 
   /* ---------------- NAV DATA ---------------- */
   const navLinks = [
     { name: "Home", href: "/" },
-    { name: "About", href: "/#about" },
+    { name: "About", href: "#about" },
     {
       name: "Solutions",
       dropdown: [
-        { name: "Smart Database", href:   "/smartdata" },
-        { name: "Demand Generation", href: "/#solutions" },
-        { name: "Event Audience Outreach", href: "/#solutions" },
-        { name: "Surveys & Feedback", href: "/#solutions" },
+        { name: "Smart Data", href: "/smart-data" },
+        { name: "Demand Generation", href: "/demand-generation" },
+        { name: "Event Audience Outreach", href: "#solutions" },
       ],
     },
-    { name: "Resources", href: "/#resources" },
-    { name: "Contact", href: "/#contact" },
+    { name: "Resources", href: "#resources" },
+    { name: "Contact", href: "#contact" },
   ];
 
+  /* ---------------- Scroll Handler ---------------- */
   const handleNavClick = (href: string) => {
     if (href.startsWith("#")) {
       const el = document.querySelector(href);
@@ -95,7 +92,7 @@ export function Navbar({ onBookDemo }: NavbarProps) {
             <Link href="/">
               <img
                 src="/favicon.png"
-                className={`transition-all ${
+                className={`cursor-pointer transition-all ${
                   isScrolled ? "h-14" : "h-16"
                 }`}
               />
@@ -112,18 +109,25 @@ export function Navbar({ onBookDemo }: NavbarProps) {
                 onMouseLeave={handleMouseLeave}
               >
                 {/* MAIN LINK */}
-                <a
-                  href={link.href}
-                  onClick={(e) => {
-                    if (link.href?.startsWith("#")) {
-                      e.preventDefault();
-                      handleNavClick(link.href);
-                    }
-                  }}
-                  className="text-sm font-medium text-muted-foreground hover:text-primary cursor-pointer"
-                >
-                  {link.name}
-                </a>
+                {link.href ? (
+                  <Link href={link.href}>
+                    <span
+                      onClick={(e) => {
+                        if (link.href.startsWith("#")) {
+                          e.preventDefault();
+                          handleNavClick(link.href);
+                        }
+                      }}
+                      className="text-sm font-medium text-muted-foreground hover:text-primary cursor-pointer"
+                    >
+                      {link.name}
+                    </span>
+                  </Link>
+                ) : (
+                  <span className="text-sm font-medium text-muted-foreground cursor-pointer">
+                    {link.name}
+                  </span>
+                )}
 
                 {/* DROPDOWN */}
                 {link.dropdown && activeDropdown === link.name && (
@@ -133,13 +137,19 @@ export function Navbar({ onBookDemo }: NavbarProps) {
                     className="absolute top-full left-1/2 -translate-x-1/2 translate-y-1 w-64 bg-white dark:bg-black border shadow-lg rounded-md py-2 z-50"
                   >
                     {link.dropdown.map((item) => (
-                      <a
-                        key={item.name}
-                        href={item.href}
-                        className="block px-5 py-2 text-sm hover:bg-accent hover:text-primary transition"
-                      >
-                        {item.name}
-                      </a>
+                      <Link key={item.name} href={item.href}>
+                        <span
+                          onClick={(e) => {
+                            if (item.href.startsWith("#")) {
+                              e.preventDefault();
+                              handleNavClick(item.href);
+                            }
+                          }}
+                          className="block px-5 py-2 text-sm hover:bg-accent hover:text-primary transition cursor-pointer"
+                        >
+                          {item.name}
+                        </span>
+                      </Link>
                     ))}
                   </div>
                 )}
@@ -167,7 +177,7 @@ export function Navbar({ onBookDemo }: NavbarProps) {
             </Button>
           </div>
 
-          {/* MOBILE */}
+          {/* MOBILE TOGGLE */}
           <div className="flex justify-end lg:hidden">
             <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
               {isMobileMenuOpen ? <X /> : <Menu />}
@@ -182,20 +192,40 @@ export function Navbar({ onBookDemo }: NavbarProps) {
           <div className="px-4 py-6 space-y-4">
             {navLinks.map((link) => (
               <div key={link.name}>
-                <a href={link.href} className="block font-medium">
-                  {link.name}
-                </a>
+                {link.href ? (
+                  <Link href={link.href}>
+                    <span
+                      onClick={(e) => {
+                        if (link.href.startsWith("#")) {
+                          e.preventDefault();
+                          handleNavClick(link.href);
+                        }
+                      }}
+                      className="block font-medium cursor-pointer"
+                    >
+                      {link.name}
+                    </span>
+                  </Link>
+                ) : (
+                  <span className="block font-medium">{link.name}</span>
+                )}
 
                 {link.dropdown && (
                   <div className="pl-4 mt-2 space-y-2">
                     {link.dropdown.map((item) => (
-                      <a
-                        key={item.name}
-                        href={item.href}
-                        className="block text-sm text-muted-foreground"
-                      >
-                        {item.name}
-                      </a>
+                      <Link key={item.name} href={item.href}>
+                        <span
+                          onClick={(e) => {
+                            if (item.href.startsWith("#")) {
+                              e.preventDefault();
+                              handleNavClick(item.href);
+                            }
+                          }}
+                          className="block text-sm text-muted-foreground cursor-pointer"
+                        >
+                          {item.name}
+                        </span>
+                      </Link>
                     ))}
                   </div>
                 )}

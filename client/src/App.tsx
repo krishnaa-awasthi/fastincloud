@@ -9,12 +9,16 @@ import NotFound from "@/pages/not-found";
 import { FaWhatsapp, FaEnvelope } from "react-icons/fa";
 import BlogsPage from "@/pages/BlogsPage";
 import CookieConsent from "./components/CookieConsent";
+import SmartData from "./pages/SmartData";
+import DemandGeneration from "./pages/DemandGeneration"
 
 function Router() {
   return (
     <Switch>
       <Route path="/" component={Home} />
       <Route path="/blogs" component={BlogsPage} />
+      <Route path="/smart-data" component={SmartData} />
+      <Route path="/demand-generation" component={DemandGeneration}/>
       <Route component={NotFound} />
     </Switch>
   );
