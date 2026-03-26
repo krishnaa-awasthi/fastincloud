@@ -3,7 +3,7 @@ import { Navbar } from "@/components/Navbar";
 import { HeroSection } from "@/components/HeroSection";
 import { TrustedBySection } from "@/components/TrustedBySection";
 import { SolutionsSection } from "@/components/SolutionsSection";
-import { WhyChooseUsSection } from "@/components/WhyChooseUsSection";
+import { ProcessSection } from "@/components/ProcessSection";
 import { CaseStudiesSection } from "@/components/CaseStudiesSection";
 import { TestimonialsSection } from "@/components/TestimonialsSection";
 import { CTABanner } from "@/components/CTABanner";
@@ -103,7 +103,7 @@ export default function Home() {
               : "opacity-0 translate-y-10"
           }`}
         >
-          <WhyChooseUsSection />
+          <ProcessSection />
         </div>
 
         <div

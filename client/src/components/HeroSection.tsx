@@ -254,22 +254,21 @@ export function HeroSection({ onBookDemo }: HeroSectionProps) {
 
             {/* headline */}
             <h1
-              className="text-5xl sm:text-6xl font-extrabold leading-[1.08] tracking-tight text-slate-900 dark:text-white"
+              className="text-2xl sm:text-3xl font-extrabold leading-[1.08] tracking-tight text-gray-900 dark:text-white"
               style={{ fontFamily: "'Sora', 'DM Sans', sans-serif" }}
             >
-              Smart Data.{" "}
-              <span className="block text-primary">Smarter</span>
-              <span className="block text-primary">Outreach.</span>
-              <span className="block text-slate-900 dark:text-white">
-                Solid Results.
+              Accelerate Your B2B Growth with{" "}
+              <span className="block text-primary text-4xl sm:text-5xl">Data, Demand Generation</span>
+              <span className="block text-primary text-4xl sm:text-5xl">& Event Reach</span>
+              <span className="block text-gray-900 dark:text-white">
+              That Drives Real Pipeline
               </span>
             </h1>
 
             {/* sub-copy */}
             <p className="text-base sm:text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
-              Access 95%+ accurate contact data, reach decision-makers directly,
-              and drive predictable pipeline growth with our AI-powered
-              intelligence platform.
+             MQL Experts helps businesses generate high-quality leads through 90%+ accurate global data,
+             targeted demand generation campaigns, and event audience outreach.
             </p>
 
             {/* CTAs */}
@@ -531,3 +530,4 @@ export function HeroSection({ onBookDemo }: HeroSectionProps) {
     </section>
   );
 }
+

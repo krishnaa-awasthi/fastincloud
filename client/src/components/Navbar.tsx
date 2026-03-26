@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "wouter";
+import SmartData from "../pages/SmartData";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Sun, Moon } from "lucide-react";
 
@@ -60,9 +61,9 @@ export function Navbar({ onBookDemo }: NavbarProps) {
     {
       name: "Solutions",
       dropdown: [
-        { name: "Smart Corporate Database", href: "/#solutions" },
-        { name: "Customer Outreach", href: "/#solutions" },
-        { name: "Appointment Setting", href: "/#solutions" },
+        { name: "Smart Database", href:   "/smartdata" },
+        { name: "Demand Generation", href: "/#solutions" },
+        { name: "Event Audience Outreach", href: "/#solutions" },
         { name: "Surveys & Feedback", href: "/#solutions" },
       ],
     },
