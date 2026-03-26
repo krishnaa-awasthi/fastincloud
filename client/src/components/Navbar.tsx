@@ -85,13 +85,15 @@ export function Navbar({ onBookDemo }: NavbarProps) {
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-3 items-center h-20">
+        {/* Changed from grid to flex layout to fix mobile spacing */}
+        <div className="flex items-center justify-between h-20">
 
           {/* LOGO */}
-          <div className="flex items-center">
+          <div className="flex items-center shrink-0">
             <Link href="/">
               <img
                 src="/favicon.png"
+                alt="Logo"
                 className={`cursor-pointer transition-all ${
                   isScrolled ? "h-14" : "h-16"
                 }`}
@@ -99,7 +101,7 @@ export function Navbar({ onBookDemo }: NavbarProps) {
             </Link>
           </div>
 
-          {/* NAV LINKS */}
+          {/* DESKTOP NAV LINKS */}
           <div className="hidden lg:flex justify-center gap-10">
             {navLinks.map((link) => (
               <div
@@ -134,7 +136,7 @@ export function Navbar({ onBookDemo }: NavbarProps) {
                   <div
                     onMouseEnter={() => handleMouseEnter(link.name)}
                     onMouseLeave={handleMouseLeave}
-                    className="absolute top-full left-1/2 -translate-x-1/2 translate-y-1 w-64 bg-white dark:bg-black border shadow-lg rounded-md py-2 z-50"
+                    className="absolute top-full left-1/2 -translate-x-1/2 translate-y-1 w-64 bg-background border shadow-lg rounded-md py-2 z-50"
                   >
                     {link.dropdown.map((item) => (
                       <Link key={item.name} href={item.href}>
@@ -157,18 +159,20 @@ export function Navbar({ onBookDemo }: NavbarProps) {
             ))}
           </div>
 
-          {/* RIGHT ACTIONS */}
-          <div className="hidden lg:flex justify-end items-center gap-4">
+          {/* RIGHT ACTIONS (Desktop Only) */}
+          <div className="hidden lg:flex justify-end items-center gap-4 shrink-0">
             <button
               onClick={toggleTheme}
               className="p-2 border rounded-full hover:bg-accent"
+              aria-label="Toggle Theme"
             >
-              {theme === "light" ? <Moon /> : <Sun className="text-yellow-500" />}
+              {theme === "light" ? <Moon size={18} /> : <Sun size={18} className="text-yellow-500" />}
             </button>
 
             <Button onClick={onBookDemo}>Request a Quote</Button>
 
             <Button
+              variant="outline"
               onClick={() =>
                 (window.location.href = "https://datasource.mqlexperts.com")
               }
@@ -177,19 +181,25 @@ export function Navbar({ onBookDemo }: NavbarProps) {
             </Button>
           </div>
 
-          {/* MOBILE TOGGLE */}
-          <div className="flex justify-end lg:hidden">
-            <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
-              {isMobileMenuOpen ? <X /> : <Menu />}
+          {/* MOBILE TOGGLE BUTTON */}
+          <div className="flex justify-end lg:hidden shrink-0">
+            <button 
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="p-2"
+              aria-label="Toggle Menu"
+            >
+              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
         </div>
       </div>
 
-      {/* MOBILE MENU */}
+      {/* MOBILE MENU DROPDOWN */}
       {isMobileMenuOpen && (
-        <div className="lg:hidden bg-background border-t">
+        <div className="lg:hidden bg-background border-t max-h-[calc(100vh-5rem)] overflow-y-auto">
           <div className="px-4 py-6 space-y-4">
+            
+            {/* Mobile Nav Links */}
             {navLinks.map((link) => (
               <div key={link.name}>
                 {link.href ? (
@@ -201,17 +211,17 @@ export function Navbar({ onBookDemo }: NavbarProps) {
                           handleNavClick(link.href);
                         }
                       }}
-                      className="block font-medium cursor-pointer"
+                      className="block font-medium cursor-pointer py-2"
                     >
                       {link.name}
                     </span>
                   </Link>
                 ) : (
-                  <span className="block font-medium">{link.name}</span>
+                  <span className="block font-medium py-2">{link.name}</span>
                 )}
 
                 {link.dropdown && (
-                  <div className="pl-4 mt-2 space-y-2">
+                  <div className="pl-4 mt-2 space-y-2 border-l-2 border-muted ml-2">
                     {link.dropdown.map((item) => (
                       <Link key={item.name} href={item.href}>
                         <span
@@ -221,7 +231,7 @@ export function Navbar({ onBookDemo }: NavbarProps) {
                               handleNavClick(item.href);
                             }
                           }}
-                          className="block text-sm text-muted-foreground cursor-pointer"
+                          className="block py-2 text-sm text-muted-foreground cursor-pointer"
                         >
                           {item.name}
                         </span>
@@ -231,6 +241,34 @@ export function Navbar({ onBookDemo }: NavbarProps) {
                 )}
               </div>
             ))}
+
+            {/* Added: Mobile Action Buttons & Theme Toggle */}
+            <div className="pt-6 mt-6 border-t space-y-4">
+              <div className="flex items-center justify-between mb-4">
+                <span className="font-medium text-muted-foreground">Switch Theme</span>
+                <button
+                  onClick={toggleTheme}
+                  className="p-2 border rounded-full hover:bg-accent"
+                >
+                  {theme === "light" ? <Moon size={20} /> : <Sun size={20} className="text-yellow-500" />}
+                </button>
+              </div>
+
+              <Button onClick={onBookDemo} className="w-full">
+                Request a Quote
+              </Button>
+
+              <Button
+                variant="outline"
+                className="w-full"
+                onClick={() =>
+                  (window.location.href = "https://datasource.mqlexperts.com")
+                }
+              >
+                User Login
+              </Button>
+            </div>
+
           </div>
         </div>
       )}
