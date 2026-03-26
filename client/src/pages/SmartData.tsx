@@ -18,9 +18,14 @@ import { Button } from "@/components/ui/button";
 import { Navbar } from "@/components/Navbar";
 import {Footer} from "@/components/Footer"
 import {CTABanner} from "@/components/CTABanner";
+import { DemoModal } from "@/components/DemoModal";
+import { useState } from "react";
 
 
 export default function SmartDataPage() {
+  const [isDemoModalOpen, setIsDemoModalOpen] = useState(false);
+
+
   return (
     <div className="bg-[#F8FAFC] text-slate-900 font-sans min-h-screen overflow-hidden">
       <Navbar onBookDemo={() => setIsDemoModalOpen(true)} />
@@ -47,10 +52,12 @@ export default function SmartDataPage() {
             </p>
 
             <div className="flex flex-wrap gap-4 pt-4">
-              <Button>
+              <Button
+              onClick={() => setIsDemoModalOpen(true)}>
                 Request Smart Data Demo
               </Button>
-              <Button>
+              <Button
+              onClick={() => setIsDemoModalOpen(true)}>
                 View Data Samples
               </Button>
             </div>
@@ -289,8 +296,14 @@ export default function SmartDataPage() {
           
         </div>
       </section>
-      <CTABanner/>
+      <CTABanner onBookDemo={() => setIsDemoModalOpen(true)} />
       <Footer />
+
+      
+      <DemoModal
+        open={isDemoModalOpen}
+        onOpenChange={setIsDemoModalOpen}
+      />
     </div>
   );
 }

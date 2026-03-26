@@ -25,8 +25,14 @@ import {
 import { Navbar } from "@/components/Navbar";
 import {Footer} from "@/components/Footer"
 import { Button } from "@/components/ui/button";
+import { DemoModal } from "@/components/DemoModal";
+import { useState } from "react";
+import { CTABanner } from "@/components/CTABanner";
+
 
 export default function DemandGenerationPage() {
+  const [isDemoModalOpen, setIsDemoModalOpen] = useState(false);
+
   return (
     <div className="bg-[#F8FAFC] text-slate-900 font-sans min-h-screen overflow-hidden">
         
@@ -54,10 +60,12 @@ export default function DemandGenerationPage() {
             </p>
 
             <div className="flex flex-wrap gap-4 pt-4">
-              <Button>
+              <Button
+              onClick={() => setIsDemoModalOpen(true)}>
                 Generate Leads Now
               </Button>
-              <Button>
+              <Button
+              onClick={() => setIsDemoModalOpen(true)}>
                 Book a Strategy Call
               </Button>
             </div>
@@ -211,7 +219,7 @@ export default function DemandGenerationPage() {
             <h2 className="text-2xl font-bold text-slate-900 mb-6">What You Get</h2>
             <div className="overflow-hidden border border-slate-200 rounded-xl shadow-sm">
               <table className="w-full text-sm text-left">
-                <thead className="bg-slate-100 text-slate-700">
+                <thead className="bg-blue-200 text-slate-700">
                   <tr>
                     <th className="p-4 font-semibold">Deliverable</th>
                     <th className="p-4 font-semibold text-center">Included</th>
@@ -283,34 +291,16 @@ export default function DemandGenerationPage() {
         </div>
       </section>
 
-      {/* ================= BOTTOM CTA BANNER (Consistent with On-Demand Service CTA) ================= */}
-      <section className="py-12 px-8 pb-24">
-        <div className="max-w-7xl mx-auto bg-gradient-to-r from-blue-700 to-teal-700 rounded-2xl p-8 md:p-12 flex flex-col md:flex-row items-start md:items-center justify-between gap-8 shadow-xl shadow-blue-900/10">
-          
-          {/* Left Content */}
-          <div className="space-y-3">
-            <div className="flex items-center gap-2 text-teal-200 text-sm font-semibold tracking-wide">
-              <TrendingUp className="w-4 h-4" />
-              Growth Engine
-            </div>
-            <h2 className="text-3xl md:text-4xl font-bold text-white">
-              Ready to Fill Your Pipeline?
-            </h2>
-            <p className="text-blue-100 text-lg">
-              Stop waiting for inbound. Generate high-quality MQLs today.
-            </p>
-          </div>
+          <CTABanner onBookDemo={() => setIsDemoModalOpen(true)} />
 
-          {/* Right CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 w-full md:w-auto shrink-0">
-            <button className="w-full sm:w-auto bg-white hover:bg-slate-50 text-blue-900 px-8 py-4 rounded-xl font-bold flex items-center justify-center gap-2 transition-all">
-              Generate Leads <ArrowRight className="w-5 h-5" />
-            </button>
-          </div>
-          
-        </div>
-      </section>
+        
 
+    <Footer/>
+
+    <DemoModal
+            open={isDemoModalOpen}
+            onOpenChange={setIsDemoModalOpen}
+        />
     </div>
   );
 }

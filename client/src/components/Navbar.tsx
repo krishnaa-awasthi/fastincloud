@@ -60,7 +60,7 @@ export function Navbar({ onBookDemo }: NavbarProps) {
       dropdown: [
         { name: "Smart Data", href: "/smart-data" },
         { name: "Demand Generation", href: "/demand-generation" },
-        { name: "Event Audience Outreach", href: "#solutions" },
+        { name: "Event Audience Outreach", href: "/eventAudience-outreach" },
       ],
     },
     { name: "Resources", href: "#resources" },

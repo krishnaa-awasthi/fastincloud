@@ -10,7 +10,8 @@ import { FaWhatsapp, FaEnvelope } from "react-icons/fa";
 import BlogsPage from "@/pages/BlogsPage";
 import CookieConsent from "./components/CookieConsent";
 import SmartData from "./pages/SmartData";
-import DemandGeneration from "./pages/DemandGeneration"
+import DemandGeneration from "./pages/DemandGeneration";
+import EventAudienceOutreach from "./pages/EventAudienceOutreach";
 
 function Router() {
   return (
@@ -19,6 +20,7 @@ function Router() {
       <Route path="/blogs" component={BlogsPage} />
       <Route path="/smart-data" component={SmartData} />
       <Route path="/demand-generation" component={DemandGeneration}/>
+      <Route path="/eventAudience-outreach" component={EventAudienceOutreach}/>
       <Route component={NotFound} />
     </Switch>
   );
