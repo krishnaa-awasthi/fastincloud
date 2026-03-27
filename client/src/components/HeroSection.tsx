@@ -219,14 +219,6 @@ export function HeroSection({ onBookDemo }: HeroSectionProps) {
     };
   }, []);
 
-  /* ---------- trusted-by logos ---------- */
-  const trustedLogos = [
-    { name: "AUTODESK", icon: "A" },
-    { name: "Fintech", icon: "F" },
-    { name: "Autoopaptic", icon: "⚙" },
-    { name: "DecoGuan", icon: "◇" },
-  ];
-
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-slate-50 via-cyan-50/30 to-slate-100 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
       {/* animated background */}
@@ -288,26 +280,6 @@ export function HeroSection({ onBookDemo }: HeroSectionProps) {
                 Request Sample Data
                 <ArrowRight className="w-4 h-4" />
               </button>
-            </div>
-
-            {/* trusted by */}
-            <div className="pt-4">
-              <p className="text-xs font-semibold uppercase tracking-widest text-slate-400 dark:text-slate-500 mb-3">
-                Trusted by
-              </p>
-              <div className="flex flex-wrap items-center gap-6">
-                {trustedLogos.map((logo) => (
-                  <div
-                    key={logo.name}
-                    className="flex items-center gap-1.5 text-slate-400 dark:text-slate-500 hover:text-slate-600 dark:hover:text-slate-300 transition-colors"
-                  >
-                    <span className="text-sm font-bold opacity-70">{logo.icon}</span>
-                    <span className="text-xs font-semibold tracking-wide">
-                      {logo.name}
-                    </span>
-                  </div>
-                ))}
-              </div>
             </div>
           </div>
 

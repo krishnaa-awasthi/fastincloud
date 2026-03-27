@@ -31,7 +31,7 @@ export default function MQLAdvantageSection() {
             The MQL Experts Advantage
           </h2>
           <h3 className="text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white leading-tight mb-6">
-            Why Leading Revenue Teams <br /> Choose Our Data
+            Why <span className="text-primary color">Leading Revenue</span> Teams <br /> Choose Our Data
           </h3>
           <p className="text-lg text-slate-600 dark:text-slate-400">
             We don't just provide lists; we provide actionable intelligence. See how our data quality and segmentation stack up against the rest.
