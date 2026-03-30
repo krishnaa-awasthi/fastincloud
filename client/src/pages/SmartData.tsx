@@ -19,6 +19,7 @@ import { Navbar } from "@/components/Navbar";
 import {Footer} from "@/components/Footer"
 import {CTABanner} from "@/components/CTABanner";
 import { DemoModal } from "@/components/DemoModal";
+import MQLAdvantageSection from "@/components/MQLAdvantageSection";
 import { useState } from "react";
 
 
@@ -296,6 +297,8 @@ export default function SmartDataPage() {
           
         </div>
       </section>
+
+      <MQLAdvantageSection/>
       <CTABanner onBookDemo={() => setIsDemoModalOpen(true)} />
       <Footer />
 

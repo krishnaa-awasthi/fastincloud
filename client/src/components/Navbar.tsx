@@ -56,7 +56,7 @@ export function Navbar({ onBookDemo }: NavbarProps) {
     { name: "Home", href: "/" },
     { name: "About", href: "#about" },
     {
-      name: "Solutions",
+      name: "Services",
       dropdown: [
         { name: "Smart Data", href: "/smart-data" },
         { name: "Demand Generation", href: "/demand-generation" },

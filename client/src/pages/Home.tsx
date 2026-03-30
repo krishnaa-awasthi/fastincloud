@@ -107,16 +107,7 @@ export default function Home() {
           <ProcessSection />
         </div>
 
-        <div
-          id="section-why-choose-us"
-          className={`transition-all duration-1000 transform ${
-            isVisible["section-why-choose-us"]
-              ? "opacity-100 translate-y-0"
-              : "opacity-0 translate-y-10"
-          }`}
-        >
-          <MQLAdvantageSection/>
-        </div>
+
 
 
         <div
