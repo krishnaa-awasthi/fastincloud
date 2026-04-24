@@ -1,16 +1,10 @@
 import { useState, useEffect } from "react";
 import { Navbar } from "@/components/Navbar";
 import { HeroSection } from "@/components/HeroSection";
-import { TrustedBySection } from "@/components/TrustedBySection";
-import { SolutionsSection } from "@/components/SolutionsSection";
-import { ProcessSection } from "@/components/ProcessSection";
-import { CaseStudiesSection } from "@/components/CaseStudiesSection";
-import { TestimonialsSection } from "@/components/TestimonialsSection";
-import { CTABanner } from "@/components/CTABanner";
 import { Footer } from "@/components/Footer";
 import { DemoModal } from "@/components/DemoModal";
 import AboutUsSection from "@/components/AboutUsSection";
-import MQLAdvantageSection from "@/components/MQLAdvantageSection";
+//import { CyberSecurityDiagram } from "@/components/CyberSecurityDiagram";
 
 export default function Home() {
   const [isDemoModalOpen, setIsDemoModalOpen] = useState(false);
@@ -73,75 +67,8 @@ export default function Home() {
         >
           <AboutUsSection/>
         </div>
-
-        <div
-          id="section-trusted-by"
-          className={`transition-all duration-1000 transform ${
-            isVisible["section-trusted-by"]
-              ? "opacity-100 translate-y-0"
-              : "opacity-0 translate-y-10"
-          }`}
-        >
-          <TrustedBySection />
-        </div>
-
-        <div
-          id="section-solutions"
-          className={`transition-all duration-1000 transform ${
-            isVisible["section-solutions"]
-              ? "opacity-100 translate-y-0"
-              : "opacity-0 translate-y-10"
-          }`}
-        >
-          <SolutionsSection />
-        </div>
-
-        <div
-          id="section-why-choose-us"
-          className={`transition-all duration-1000 transform ${
-            isVisible["section-why-choose-us"]
-              ? "opacity-100 translate-y-0"
-              : "opacity-0 translate-y-10"
-          }`}
-        >
-          <ProcessSection />
-        </div>
-
-
-
-
-        <div
-          id="section-case-studies"
-          className={`transition-all duration-1000 transform ${
-            isVisible["section-case-studies"]
-              ? "opacity-100 translate-y-0"
-              : "opacity-0 translate-y-10"
-          }`}
-        >
-          <CaseStudiesSection />
-        </div>
-
-        <div
-          id="section-testimonials"
-          className={`transition-all duration-1000 transform ${
-            isVisible["section-testimonials"]
-              ? "opacity-100 translate-y-0"
-              : "opacity-0 translate-y-10"
-          }`}
-        >
-          <TestimonialsSection />
-        </div>
-
-        <div
-          id="section-cta-banner"
-          className={`transition-all duration-1000 transform ${
-            isVisible["section-cta-banner"]
-              ? "opacity-100 translate-y-0"
-              : "opacity-0 translate-y-10"
-          }`}
-        >
-          <CTABanner onBookDemo={() => setIsDemoModalOpen(true)} />
-        </div>
+        
+        
 
         <Footer />
       </main>
