@@ -183,7 +183,7 @@ export function HeroSection({ onBookDemo }: HeroSectionProps) {
 
                   {/* Main Headline */}
                   <h2
-                    className={`slide-content-${index} text-5xl sm:text-6xl lg:text-7xl font-extrabold leading-[1.05] tracking-tight text-white drop-shadow-lg`}
+                    className={`slide-content-${index} text-5xl sm:text-6xl lg:text-7xl font-extrabold leading-[1.05] tracking-tight text-cyan-400 drop-shadow-lg`}
                   >
                     {slide.title}
                   </h2>

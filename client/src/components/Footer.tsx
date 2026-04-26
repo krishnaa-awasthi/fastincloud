@@ -164,11 +164,16 @@ export function Footer() {
                     <MapPin className="w-5 h-5 text-cyan-400" />
                   </div>
                   <span className="leading-relaxed">
-                    Fast in Cloud Digital Solutions LLP <br />
-                    A-32, First Floor, FIEE Complex, <br />
-                    Okhla Industrial Area, Phase 2, <br />
-                    New Delhi – 110020, India
+                    Registered office: Vision Co-work, <br/>
+                    H. IN.KH.NO. - 293, S/F, Western Marg,<br /> 
+                    Saidulajab, Near Kher Singh Estate,<br/>
+                    New Delhi-110030<br/>
                   </span>
+                  <span>
+                      Branch: G-01, Ground Floor, <br />
+                      TC Co-working Space, A-197, Sector 63,<br/>
+                      Noida, Uttar Pradesh 201309
+                    </span>
                 </li>
                 <li className="flex items-center gap-4">
                   <div className="p-2 bg-white/5 rounded-lg border border-white/10">
